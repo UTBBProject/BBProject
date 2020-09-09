@@ -99,30 +99,76 @@
 			:getPageNum="getPageNum"
 			:actionClick="buttonClicked"
 			:onLoad="table.loading"
-            :disableColl="table.disableColl"
             :currentPage="table.currentPage"
             trStyle
             style="font-size: 13px;"
 		>
             <template v-slot:rows>
-                <tr class="bb-table-row" v-for="list in table.show_lists" :key="list.id" :class="checkIfHasDispute(list.id) ? 'has-dispute' : ''">
-                    <td v-for="(item,key, index) of setBody(list)" @click="buttonClicked(list.id,'dispute','',!Array.isArray(item))" :key="index" :style="typeof item.style != 'undefined' ? item.style : ''">
-                        <div v-if="Array.isArray(item)">
-                            <span v-for="action in item" :key="action.key">
-                                <button v-if="typeof action.type == 'undefined' && action.type != 'label'" :style="action.btnStyle" class="act-btn" :class="action.btnClass" v-html="action.btnName" @click="buttonClicked(list.id,action.btnKey,(typeof action.btnCallData !== 'undefined')?(action.btnCallData != ''? action.btnCallData: ''):'')">
-                                </button>
-                                <span v-else-if="typeof action.type != 'undefined' && action.type == 'label'">
-                                    <br v-if="action.nextLine == true">
-                                    <span  :class="action.class" :style="action.style" v-html="action.text">
-                                    </span>
-                                </span>
-                            </span>
-                        </div>
-                        <div v-else v-html="typeof item == 'object' ? item.text : item"></div>
+                <tr 
+                    v-for="list in table.show_lists" 
+                    :key="list.id"
+                    @click="buttonClicked('dispute','', list)"
+                    :class="list.dispute_status != null && list.dispute_description != null ? 'has-dispute' : ''"
+                >
+                    <td>
+                        {{ list.id }}
+                    </td>
+                    <td>
+                        {{ list.class_date }}
+                    </td>
+                    <td >
+                        <button 
+                            style="width: 73px;"
+                            class="act-btn"
+                            :class="list.class_status == 'Valid' ? 'act-primary act-small':( 
+                                list.class_status == 'Transferred' ? 'act-info act-small': (
+                                    list.class_status=='Invalid' ? 'act-danger act-small': 'act-warning act-small'
+                                )
+                            )"
+                            v-on:click.stop=""
+                            @click="buttonClicked('status', list.class_id)"
+                        >
+                            {{ list.class_status }}
+                        </button><br>
+                        <small
+                            v-if="list.dispute_status_num != 0"
+                            :class="list.dispute_status_num > 0 ? (list.dispute_status_num == 1 ? 'label-success':'label-danger' ) : ''"
+                        >*Dispute</small>
+                    </td>
+                    <td>
+                        <button
+                            class="act-btn act-grey"
+                            style="width: 60px;"
+                            v-on:click.stop=""
+                            @click="buttonClicked('amount',list.class_id,{
+                                class_rate: list.amount!=0 || list.amount!=''?list.class_rate:0,
+                                week_pay: list.weekend_pay,
+                                sub_class: list.ct_amount,
+                                amount: list.amount,
+                                video_duration: list.video_duration,
+                                video_deduction: list.video_deduction,
+                                note: list.note
+                            })"
+                        >
+                            {{ list.video_deduction != 0 && list.video_deduction != "" ? list.video_deduction: list.amount }}
+                        </button>
+                    </td>
+                    <td>
+                        {{parseInt(list.class_count)}}
+                    </td>
+                    <td>
+                        {{ list.running_class_count}}
+                    </td>
+                    <td>
+                        {{ list.current_level }}
                     </td>
                 </tr>
             </template>
 		</tablelayout>
+
+
+
+
         <!-- modal clicking the amount-->
         <b-modal size="sm" ref="amount-modal" hide-footer title="Amount" centered hide-header>
             <div v-if="modal.amount > 0" class="d-block">
@@ -149,13 +195,18 @@
             <b-button variant="primary" size="sm" class="mt-3" style="float:right" block @click="closeModal('amount-modal')">Close</b-button>
         </b-modal>
 
+
+
+
         <!-- This is when click the row-->
         <b-modal size="sm" ref="dispute-modal" hide-footer title="Amount" centered hide-header>
             <div class="d-block" v-if="!isObjectEmpty(table.disputeDetails)">
                 <span class="dispute-label">Date: </span><span>{{ table.disputeDetails.discription.date }}</span><br>
                 <span class="dispute-label">Category: </span><span>{{ JSON.parse(table.disputeDetails.discription.tag1)[0] }}</span><br>
                 <span class="dispute-label">Sub-Category: </span><span>{{ JSON.parse(table.disputeDetails.discription.tag2)[0] }}</span><br>
-                <span class="dispute-label">Dispute Detail: </span><span>{{ table.disputeDetails.discription.desc }}</span><br>
+                <span class="dispute-label">Dispute Detail: </span><span>{{ table.disputeDetails.discription.dispute_detail }}</span><br>
+                <span class="dispute-label" >Dispute Status: </span><span>{{ table.disputeDetails.status }}</span><br>
+                <span class="dispute-label" >Dispute Result: </span><span>{{ table.disputeDetails.dispute_result }}</span>
             </div>
             <b-button variant="primary" size="sm" class="mt-3" style="float:right" block @click="closeModal('dispute-modal')">Close</b-button>
         </b-modal>

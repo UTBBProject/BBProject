@@ -745,9 +745,11 @@ public function get_bb_earnings_log(Request $request){
             'video_deduction' => $value->video_deduction,
             'date_created' => $value->date_created,
             'note' => $t_type,
-            'dispute_status' => isset($value->dispute_status) ? $value->dispute_status : null,
+            'dispute_status_num' => $value->dispute_status,
+            'dispute_status' => isset($value->dis_status) ? $value->dis_status : null,
             'dispute_description' => isset($value->dispute_description) ? $value->dispute_description : null,
-            'dispute_date' => isset($value->dispute_date) ? $value->dispute_date : null
+            'dispute_date' => isset($value->dispute_date) ? $value->dispute_date : null,
+            'dispute_result' => isset($value->dispute_result) ? $value->dispute_result : null
         ];
     }
     return response()->json($response);

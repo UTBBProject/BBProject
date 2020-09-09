@@ -175,17 +175,22 @@
 }
 
 .hr-table .label-primary{
-	background-color: #b3e8f8;
-	color: #666666;
+	/* background-color: #b3e8f8; */
+	color: var(--primary);
 }
 .hr-table .label-warning{
-	background-color: #f1d2b5;
-	color: #494949;
+	/* background-color: #f1d2b5; */
+	color: var(--warning);
 }
 
 .hr-table .label-danger{
-	background-color: #ecb2b8;
-	color: #666666;
+	/* background-color: #ecb2b8; */
+	color: var(--danger);
+}
+
+.hr-table .label-success{
+	/* background-color: #ecb2b8; */
+	color: var(--success);
 }
 
   /* this changes the position of the loading */

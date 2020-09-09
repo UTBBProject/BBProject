@@ -242,7 +242,7 @@ class Employees extends Model implements AuthenticatableContract, AuthorizableCo
     public function er_data($edu_id,$request){
         $search = [];
         $data = $this->db_payroll->table('bb_earnings_log AS a')
-            ->select('a.*', 'b.dispute_status', 'b.dispute_create_time as dispute_date', 'b.details as dispute_description')
+            ->select('a.*', 'b.dispute_status as dis_status', 'b.dispute_create_time as dispute_date', 'b.details as dispute_description', 'b.dispute_result')
             ->leftJoin('bb_dispute_logs AS b', function($join){
                 $join->on('a.class_id', '=', 'b.class_id');
                 $join->on('a.edu_id', '=', 'b.edu_id');
