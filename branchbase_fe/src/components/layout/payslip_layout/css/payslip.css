@@ -1,0 +1,94 @@
+
+:root{
+    --border-color: #9e9e9e;
+    --header-title-bg: #147c9c;
+    --grey: #c0c0c0;
+    --tb: #cecece;
+}
+.utalk-payslip{
+    /* border-top: 1px solid var(--tb);
+    border-bottom: 1px solid var(--tb); */
+}
+.utalk-payslip table{
+    border-collapse: collapse;
+    width: 99%;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
+}
+.utalk-payslip td, .utalk-payslip th{
+    /* border: 1px solid #999; */
+    padding: 2px;
+}.utalk-payslip table .row-blank{
+    color: white !important;
+}
+
+.utalk-payslip .text-tab-left{
+    padding-left: 30px;
+}
+
+
+
+
+
+/* borders */
+.utalk-payslip .with-border{
+    border-bottom: 1px solid #c0c0c0;
+    border: 1px solid var(--grey);
+}
+
+.utalk-payslip .line-right{
+    /* border-right: 1px solid var(--border-color); */
+}
+.utalk-payslip .line-left{
+    /* border-left: 1px solid var(--border-color); */
+}
+.utalk-payslip .with-border-bottom{
+    border-bottom: 1px solid #9e9e9e;
+    border-bottom: 1px solid var(--border-color);
+}
+.utalk-payslip .with-border-bottom-bold{
+    /* border-bottom: 1px solid var(--border-color); */
+}
+/* text */
+.utalk-payslip .table-text{
+    font-size: 12px;
+    /* width: 180px; */
+}
+.utalk-payslip .text-italic{
+    font-style: italic;
+}
+.utalk-payslip .table-text-bold{
+    font-weight: bold;
+}
+.utalk-payslip .title-header{
+    background-color: #147c9c;
+    background-color: var(--header-title-bg);
+    /* border-right: 1px solid var(--header-title-bg);
+    border-left: 1px solid var(--header-title-bg); */
+    font-weight: bold;
+    font-size: 12px;
+    color: white;
+    padding: 5px;
+    /* border-radius: 5px;
+    margin-right: 5px; */
+}
+.utalk-payslip .title-header-ex{
+    background-color: white;
+    color: grey;
+}
+.table-text .center{
+    float: right;
+    margin-right: 15%;
+}
+/* row blank */
+.row-blank{
+    height: 20px;
+}
+.text-tab-sub{
+    margin-left:70px;
+}

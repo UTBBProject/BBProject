@@ -1,0 +1,43 @@
+version: '2'
+services:
+
+  # The Application
+  app:
+    build:
+      context: ./
+      dockerfile: app.dockerfile
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+    #environment:
+    #- "APP_NAME=bb_be"
+    #- "APP_ENV=production"
+    #- "APP_KEY="
+    #- "APP_DEBUG=true"
+    #- "APP_URL=http://localhost"
+    #- "APP_TIMEZONE=Asia/Manila"
+
+  # The Web Server
+  web:
+    build:
+      context: ./
+      dockerfile: web.dockerfile
+    working_dir: /var/www
+    volumes_from:
+      - app
+    ports:
+      - 8080:80
+
+        # The Database
+        #database:
+        # image: mysql:5.6
+        # volumes:
+        #   - dbdata:/var/lib/mysql
+        # environment:
+        #   - "MYSQL_ROOT_PASSWORD=secret"
+        #   - "MYSQL_DATABASE=homestead"
+        #   - "MYSQL_USER=homestead"
+        # ports:
+        #   - "33061:3306"
+volumes:
+  dbdata:

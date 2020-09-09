@@ -1,0 +1,132 @@
+/* this is for the detail box just a above the table */
+.detail-box{
+    padding:10px;
+    text-align:right;
+    font-size: 12px;
+    /* disable highlight */
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
+    transition: 0.3s;
+}
+.detail-box .detail-item{
+    margin: 5px;
+    padding: 6px 12px 6px 12px;
+    background-color:#d8d8d8;
+    border: 1px solid #d8d8d8;
+    border-radius: 6px;
+}
+.detail-box .detail-item .detail-badge{
+    background-color: white;
+    padding: 1px 5px 1px 5px;
+    margin-left: 3px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+/* primary */
+.detail-box .detail-item-primary{
+    margin: 5px;
+    padding: 6px 12px 6px 12px;
+    background-color:#1d90f5;
+    border: 1px solid #1d90f5;
+    border-radius: 6px;
+    color: white;
+}
+.detail-box .detail-item-primary .detail-badge{
+    border: 1px solid #1d90f5;
+    color: #1d90f5;
+}
+/* warning */
+.detail-box .detail-item-warning{
+    margin: 5px;
+    padding: 6px 12px 6px 12px;
+    background-color:#f0821c;
+    border: 1px solid #f0821c;
+    border-radius: 6px;
+    color: white;
+}
+.detail-box .detail-item-warning .detail-badge{
+    border: 1px solid #f0821c;
+    color: #f0821c;
+}
+/* info */
+.detail-box .detail-item-info{
+    margin: 5px;
+    padding: 6px 12px 6px 12px;
+    background-color:#2ebce7;
+    border: 1px solid #2ebce7;
+    border-radius: 6px;
+    color: white;
+}
+.detail-box .detail-item-info .detail-badge{
+    color: #2ebce7;
+}
+
+/* danger */
+.detail-box .detail-item-danger{
+    margin: 5px;
+    padding: 6px 12px 6px 12px;
+    background-color:#dc3545;
+    border: 1px solid #dc3545;
+    border-radius: 6px;
+    color: white;
+}
+.detail-box .detail-item-danger .detail-badge{
+    color: #dc3545;
+}
+
+.hhh-50{
+    height: 40px;
+}
+.mtm-20{
+    margin-top: -20px;
+}
+.warning-note{
+    float: left; 
+    color:red; 
+    padding:5px; 
+    font-weight: bold; 
+    border:2px solid red;
+    font-size: 12px;
+}
+.dispute-label{
+    font-weight: bold;
+}
+
+.has-dispute{
+    background-color: rgba(112, 112, 112, 0.383);
+    cursor: pointer;
+}
+
+
+@media (min-width: 410px) and (max-width: 1111px) {
+    .detail-box{
+        height: 80px;
+        width:100vh;
+        text-align: left;
+    }
+    .warning-note{
+        margin-bottom: 15px;
+        margin-left: 5px;
+    }
+}
+@media (max-width: 410px){
+    .detail-box{
+        height: 80px;
+        width:100vh;
+        text-align: left;
+    }
+    .warning-note{
+        margin-bottom: 15px;
+        margin-left: 5px;
+        font-size: 9px;
+    }
+    .detail-box .detail-item{
+        margin: 2px;
+        padding: 6px 12px 6px 12px;
+    }
+}

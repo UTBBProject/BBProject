@@ -1,0 +1,196 @@
+
+
+/* Notice:  */
+.hr-table{
+	background-color: #fff; /**To support IE*/
+	background-color: var(--table_bg);
+	/* padding: 15px; */
+	/* margin:10px; */
+    /* border-radius: 10px; */
+    margin-bottom: 20px;
+	overflow: hidden;
+    
+}
+.hr-table table {
+    /* margin-top: -6px; */
+	width: 100% !important;
+	text-align: center;
+	border-collapse: separate;
+    border-spacing: 0;
+}
+.hr-table .outer-table{
+	/* border-bottom: 1px solid #1d90f5; */
+    border-bottom: 1px solid #cecece;
+    /* removed scroll bar in firefox */
+    scrollbar-width: none;
+}
+.hr-table .outer-table::-webkit-scrollbar{
+	width: 0 !important;
+}
+.hr-table table thead th{
+	border-bottom: 2px solid #0D708F;
+    border-bottom: 2px solid var(--primary);
+}
+.hr-table table thead th{
+    position: sticky;
+    top: 0;
+	background-color: var(--table_thead_bg);
+	z-index:1;
+}
+
+.hr-table .table thead{
+    border:none;
+}
+.hr-table .table tbody{
+    border:none;
+}
+.hr-table .table thead tr{
+	font-weight: bold;
+	background-color:var(--table_thead_bg);
+	color: var(--table_thead_text_color);
+	border-radius: 10px;
+}
+ .hr-table .table td{
+	padding: 5px;
+	color: var(--table_tbody_text_color);
+}
+
+.hr-table .act-btn{
+	margin: 3px;
+	border-radius: 5px;
+	border:none;
+	padding: 3px 6px 3x 6px;
+	cursor: pointer;
+}
+
+.hr-table .act-btn p{
+	margin:0px !important;
+	padding: 0px !important;
+}
+.hr-table .act-primary{
+	background-color: #0D708F;
+	background-color: var(--primary);
+	color: white;
+	transition: 0.3s;
+}
+.hr-table .act-primary:hover{
+	background-color: #0b556b;
+	background-color: var(--primary_hover);
+	color: white;
+}
+
+.hr-table .act-warning{
+	background-color: #ffc107;
+	background-color: var(--warning);
+	color: white;
+	transition: 0.3s;
+}
+.hr-table .act-warning:hover{
+	background-color: #c79501;
+	background-color: var(--warning_hover);
+	color: white;
+}
+.hr-table .act-info{
+	background-color: #17a2b8;
+	background-color: var(--info);
+	color: white;
+	transition: 0.3s;
+}
+.hr-table .act-info:hover{
+	background-color: #127888;
+	background-color: var(--info_hover);
+	color: white;
+}
+.hr-table .act-success{
+	background-color: #28a745;
+	background-color: var(--success);
+	color: white;
+	transition: 0.3s;
+}
+.hr-table .act-success:hover{
+	background-color: #1f8136;
+	background-color: var(--sucess_hover);
+	color: white;
+}
+.hr-table .act-danger{
+	background-color: #dc3545;
+	background-color: var(--danger);
+	color: white;
+	transition: 0.3s;
+}
+.hr-table .act-danger:hover{
+	background-color: #a72835;
+	background-color: var(--danger_hover);
+	color: white;
+}
+.hr-table .act-inverse{
+	background-color: var(--inverse);
+	color: white;
+	transition: 0.3s;
+}
+.hr-table .act-inverse:hover{
+	background-color: var(--inverse_hover);
+	color: white;
+}
+.hr-table .act-faded{
+	background-color: var(--faded);
+	color: #292b2c;
+	transition: 0.3s;
+}
+.hr-table .act-faded:hover{
+	background-color: var(--faded_hover);
+	color: #292b2c;
+}
+.hr-table .act-grey{
+	background-color: #7e7e7e;
+	color: #ffffff;
+	transition: 0.3s;
+}
+.hr-table .act-grey:hover{
+	background-color: #4e4e4e;
+	color: #ffffff;
+}
+.hr-table .act-small{
+	font-size: 12px;
+}
+
+.hr-table .loading-table{
+	color: #666666;
+	position: relative;
+	background-color: red;
+}
+
+/* This is for the label class */
+.hr-table .label-text{
+	font-size: 11px;
+	padding: 2px 7px 2px 7px;
+	border-radius: 0px;
+	-webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
+}
+
+.hr-table .label-primary{
+	background-color: #b3e8f8;
+	color: #666666;
+}
+.hr-table .label-warning{
+	background-color: #f1d2b5;
+	color: #494949;
+}
+
+.hr-table .label-danger{
+	background-color: #ecb2b8;
+	color: #666666;
+}
+
+  /* this changes the position of the loading */
+@media (max-width:600px){
+	.lds-roller {
+		left: 300%;
+	}
+}

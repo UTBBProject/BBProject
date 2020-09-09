@@ -1,0 +1,55 @@
+    .date_time_picker{
+        padding:2px; 
+    }
+    .date_time_picker input{
+        text-align: center;
+    }
+    .date_time_picker .range_icon{
+        width: 10%;
+        text-align: center;
+        margin: auto;
+    }
+    .date_time_picker .datetime-picker{
+        width: 100%;
+    }
+
+    .date_time_picker .month-setter{
+        text-align: center;
+    }
+    .date_time_picker .month-setter .year{
+        text-align: center;
+    }
+
+    .date_time_picker .week, .date_time_picker .headers{
+        display: inline-table;
+        width: 100%;
+        
+    }
+    .date_time_picker .week .port,.date_time_picker .headers .port, .date_time_picker .headers .days, .date_time_picker .week .days{
+            display: table-cell;
+    }
+    .date_time_picker .week  .port:hover,.date_time_picker .headers .port:hover{
+        
+        color:  var(--primary);
+    }
+    .date_time_picker .week .days,.date_time_picker .headers .days{
+        
+        color:  var(--primary);
+    }
+    .date_time_picker .okButton{
+        color:  var(--primary);
+    }
+    .date_time_picker .showSelector ul li.active{
+        background:  var(--primary);
+    }
+    .date_time_picker .year-month-wrapper{
+        background: var(--primary);
+        
+    }
+    .date_time_picker .year-month-wrapper button{
+        background:  var(--primary) !important;
+    }
+    .date_time_picker .activePort,.date_time_picker .activePort:hover{
+        background:  var(--primary);
+        color: #fff!important;
+    }

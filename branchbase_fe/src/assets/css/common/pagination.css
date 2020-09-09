@@ -1,0 +1,84 @@
+.page-pagination{
+    color: grey;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none;
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
+	}
+	.page-pagination li{
+        display: inline;
+    }
+    .page-pagination a{
+        /* width: 30px; */
+        /* height: 30px; */
+        background-color: white;
+        background-color: var(--p_button_inactive);
+        color:grey;
+        color:var(--p_button_inactive_text);
+        padding: 5px 10px 5px 10px;
+        border: 1px solid #9e9e9e;
+        border: 1px solid var(--p_button_inactive_border);
+        text-align:center;
+        margin: 2px;
+        border-radius: 5px;
+        transition: 0.2s;
+        -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none; /* Safari */
+        -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Old versions of Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+                user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Opera and Firefox */
+    }
+    .page-pagination .disabled a{
+        border: 1px solid #c8c8c8;
+        cursor: default;
+        color: #d4d4d4 !important;
+    }
+    .page-pagination .disabled a:hover{
+        border: 1px solid #c8c8c8;
+        background-color: white;
+        color: #d4d4d4;
+    }
+    .page-pagination .disabled a:active{
+        border: 1px solid #d4d4d4;
+        background-color: white;
+        color: #d4d4d4;
+    }
+    .page-pagination li a:hover{
+        background-color: grey;
+        background-color: var(--p_button_inactive_hover);
+        color: white;
+    }
+    .page-pagination li a:active{
+        background-color: white;
+        color: grey;
+        color: var(--p_button_inactive_text);
+    }
+	.paginpage-paginationation .nextClass, .page-pagination .prevClass{
+        color: grey;
+		color: var(--p_button_inactive_text);
+		width: 50px;
+	}
+	.page-pagination .active a{
+        color: white !important;
+        background-color: #0D708F;
+        background-color: var(--p_button_active);
+        border: 1px solid #0D708F;
+        border: 1px solid var(--p_button_active);
+        transition: 0.3s;
+    }
+    .page-pagination .active a:hover{
+        background-color: #015974 !important;
+        background-color: var(--p_button_active_hover) !important;
+        color: white !important;
+    }
+    .page-pagination .active a:active{
+        background-color: var(--p_button_active);
+    }
+    .page-pagination a{
+		outline: none;
+  }

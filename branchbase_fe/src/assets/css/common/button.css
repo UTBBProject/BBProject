@@ -1,0 +1,42 @@
+.btn{
+    padding: 3px 15px 3px 15px;
+    background-color: var(--default);
+    color: #2e2e2e;
+    border-radius: 5px;
+    border:1px solid var(--default);
+    transition: 0.3s;
+}
+.btn:hover{
+    background-color: var(--default_hover);
+}
+.btn:active{
+    background-color: var(--default);
+}
+
+/* primary button */
+.btn-primary{
+    background-color: var(--primary);
+    border:1px solid var(--primary);
+    color: #fff;
+    transition: 0.3s;
+}
+.btn-primary:hover{
+    background-color: var(--primary_hover);
+}
+.btn-primary:active{
+    background-color: var(--primary);
+}
+
+/* info button */
+.btn-info{
+    background-color: var(--info);
+    border:1px solid var(--info);
+    color: #fff;
+    transition: 0.3s;
+}
+.btn-info:hover{
+    background-color: var(--info_hover);
+}
+.btn-info:active{
+    background-color: var(--info);
+}

@@ -1,0 +1,64 @@
+pipeline {
+  agent any
+  stages {
+    stage('kwa') {
+      parallel {
+        stage('kwa') {
+          steps {
+            echo 'don kwaing'
+          }
+        }
+
+        stage('kwa 2') {
+          steps {
+            echo 'test'
+          }
+        }
+
+        stage('kwa 3') {
+          steps {
+            sleep 213
+          }
+        }
+
+        stage('kwa 3.1') {
+          steps {
+            echo 'asgudyas'
+          }
+        }
+
+      }
+    }
+
+    stage('kwa 4') {
+      parallel {
+        stage('kwa 4') {
+          steps {
+            sleep 1
+          }
+        }
+
+        stage('kwa 4.1') {
+          steps {
+            sleep 1
+            echo 'asdasd'
+          }
+        }
+
+        stage('kwa 5') {
+          steps {
+            sleep 2
+          }
+        }
+
+      }
+    }
+
+    stage('kwa 6') {
+      steps {
+        echo 'kwaa'
+      }
+    }
+
+  }
+}
