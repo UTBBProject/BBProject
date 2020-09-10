@@ -245,13 +245,13 @@
                         <span class="float-right text-bold">Dispute Status: </span>
                     </b-col >
                      
-                     <b-col cols='8'>{{ table.disputeDetails.status }}</b-col>
+                     <b-col cols='8'>{{ table.disputeDetails.status === 'RUNNING' ? 'RUNNING/PROCESSING' : table.disputeDetails.status }}</b-col>
                 </b-row>
                 <b-row>
                     <b-col class="p-0">
                         <span class="float-right text-bold">Dispute Result: </span>
                     </b-col>
-                    <b-col cols='8'>{{ table.disputeDetails.dispute_result }}</b-col>
+                    <b-col cols='8'>{{ table.disputeDetails.status === 'RUNNING' ? '--' : table.disputeDetails.dispute_result }}</b-col>
                 </b-row>
             </b-container>
             <b-button variant="primary" size="sm" class="mt-3" style="float:right" block @click="closeModal('dispute-modal')">Close</b-button>
