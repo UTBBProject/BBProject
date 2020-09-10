@@ -710,6 +710,16 @@ public function get_bb_earnings_log(Request $request){
     $reason_for_transfer = $this->employee_model->get_reason_lession_transfer($transferred_class_ids);
     $reason_for_transfer = $reason_for_transfer ? $reason_for_transfer->keyBy('lession_id')->toArray() : false;
 
+    // get class ids
+    $class_ids = collect($data['data'])->map(function($class){
+        return $class->class_id;
+    });
+
+    // get dispute logs
+    $dispute_logs = $this->employee_model->get_dispute_logs($class_ids);
+    $dispute_data = $dispute_logs ? $this->key_map_by_ids($class_ids, $dispute_logs) : [];
+
+    // loop data and set data to return
     foreach ($data['data'] as $value) {
         $t_type = 0;
         if(isset($get_note_type[$value->class_id]) && $get_note_type[$value->class_id]->edu_id == $value->edu_id && $get_note_type[$value->class_id]->t_type <= count($note)){
@@ -719,6 +729,7 @@ public function get_bb_earnings_log(Request $request){
             $t_type = $reason_for_transfer[$value->class_id]->transfer_reason_en;
         }
 
+        $disLog = isset($dispute_data[$value->class_id]) ? $dispute_data[$value->class_id] : null;
         $response['data'][] = [
             'id' => $value->id,
             'user_id' => $value->user_id,
@@ -746,10 +757,10 @@ public function get_bb_earnings_log(Request $request){
             'date_created' => $value->date_created,
             'note' => $t_type,
             'dispute_status_num' => $value->dispute_status,
-            'dispute_status' => isset($value->dis_status) ? $value->dis_status : null,
-            'dispute_description' => isset($value->dispute_description) ? $value->dispute_description : null,
-            'dispute_date' => isset($value->dispute_date) ? $value->dispute_date : null,
-            'dispute_result' => isset($value->dispute_result) ? $value->dispute_result : null
+            'dispute_status' =>$disLog ? $disLog->dispute_status : null,
+            'dispute_description' => $disLog ? $disLog->details: null,
+            'dispute_date' => $disLog ? $disLog->date_created: null,
+            'dispute_result' => $disLog ? $disLog->dispute_result: null,
         ];
     }
     return response()->json($response);
@@ -1031,6 +1042,20 @@ public function get_current_classrate(){
     return response()->json($data);
 }
 
+
+public function key_map_by_ids($class_ids=[], $dispute_logs = []){
+    $dispute_data = [];
+
+    foreach($class_ids as $class_id) {
+        foreach($dispute_logs as $dispute_log) {
+            if($class_id == $dispute_log->class_id){
+                $dispute_data[$class_id] = $dispute_log;
+            }
+        }
+    }
+
+    return $dispute_data;
+}
 
 }
 ?>

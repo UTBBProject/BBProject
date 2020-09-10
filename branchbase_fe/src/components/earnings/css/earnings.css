@@ -102,7 +102,31 @@
     cursor: pointer;
 }
 
+.parent-tooltip{
+    position: relative;
+}
+.parent-tooltip .tool-tip{
+    z-index: 100; 
+    border: 1px; 
+    background-color: white; 
+    border: 1px solid green; 
+    padding: 3px; 
+    color: green;  
+    top: 20px;  
+    left: 20px;
+}
 
+.parent-tooltip:hover span.tool-tip{ 
+    display:block; 
+} 
+
+
+.float-right{
+    float: right;
+}
+.text-bold{
+    font-weight: bold;
+}
 @media (min-width: 410px) and (max-width: 1111px) {
     .detail-box{
         height: 80px;

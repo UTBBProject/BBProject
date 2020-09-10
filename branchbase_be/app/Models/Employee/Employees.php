@@ -240,13 +240,8 @@ class Employees extends Model implements AuthenticatableContract, AuthorizableCo
     }
 
     public function er_data($edu_id,$request){
-        $search = [];
         $data = $this->db_payroll->table('bb_earnings_log AS a')
-            ->select('a.*', 'b.dispute_status as dis_status', 'b.dispute_create_time as dispute_date', 'b.details as dispute_description', 'b.dispute_result')
-            ->leftJoin('bb_dispute_logs AS b', function($join){
-                $join->on('a.class_id', '=', 'b.class_id');
-                $join->on('a.edu_id', '=', 'b.edu_id');
-            })
+            ->select('a.*')
             ->where('a.edu_id','=',$edu_id)
             ->where(function($query) use ($request){
                 if ($request->has('class_id')){
@@ -1502,5 +1497,18 @@ class Employees extends Model implements AuthenticatableContract, AuthorizableCo
         return !empty($data) ? $data : false;
     }
 
+
+    public function get_dispute_logs($class_ids = []){
+        if(!$class_ids) {
+            return false;
+        }
+
+        $data = $this->db_payroll->table('bb_dispute_logs')
+        ->whereIn('class_id',$class_ids)
+        ->orderBy('id', 'DESC')
+        ->get();
+
+        return !empty($data) ? $data : false; 
+    }
 
 }

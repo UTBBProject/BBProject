@@ -108,7 +108,8 @@
                 <td v-if="table.show_lists.length == 0" colspan="100" style="text-align:center;">
 					<NoData />
 				</td>
-                <tr 
+                <tr v-b-tooltip.hover.bottom.v-primary
+                    :title="list.dispute_status != null && list.dispute_description != null ? 'View Dispute' : ''"
                     v-else
                     v-for="list in table.show_lists" 
                     :key="list.id"
@@ -116,12 +117,13 @@
                     :class="list.dispute_status != null && list.dispute_description != null ? 'has-dispute' : ''"
                 >
                     <td>
-                        {{ list.id }}
+                        {{ list.class_id }}
                     </td>
                     <td>
                         {{ list.class_date }}
                     </td>
                     <td >
+                        
                         <button 
                             style="width: 73px;"
                             class="act-btn"
@@ -136,9 +138,17 @@
                             {{ list.class_status }}
                         </button><br>
                         <small
-                            v-if="list.dispute_status_num != 0"
-                            :class="list.dispute_status_num > 0 ? (list.dispute_status_num == 1 ? 'label-success':'label-danger' ) : ''"
-                        >*Dispute</small>
+                            v-if="list.dispute_status_num == 1"
+                            class="label-success"
+                        >*Disputed</small>
+                        <small
+                           v-if="list.dispute_status_num == 2"
+                            class="label-danger"
+                        >*Disputed</small>
+                        <small
+                            v-if="list.dispute_status_num == 3"
+                            class="label-info"
+                        >*Disputed</small>
                     </td>
                     <td>
                         <button
@@ -204,15 +214,46 @@
 
 
         <!-- This is when click the row-->
-        <b-modal size="sm" ref="dispute-modal" hide-footer title="Amount" centered hide-header>
-            <div class="d-block" v-if="!isObjectEmpty(table.disputeDetails)">
-                <span class="dispute-label">Date: </span><span>{{ table.disputeDetails.discription.date }}</span><br>
-                <span class="dispute-label">Category: </span><span>{{ JSON.parse(table.disputeDetails.discription.tag1)[0] }}</span><br>
-                <span class="dispute-label">Sub-Category: </span><span>{{ JSON.parse(table.disputeDetails.discription.tag2)[0] }}</span><br>
-                <span class="dispute-label">Dispute Detail: </span><span>{{ table.disputeDetails.discription.dispute_detail }}</span><br>
-                <span class="dispute-label" >Dispute Status: </span><span>{{ table.disputeDetails.status }}</span><br>
-                <span class="dispute-label" >Dispute Result: </span><span>{{ table.disputeDetails.dispute_result }}</span>
-            </div>
+        <b-modal ref="dispute-modal" hide-footer title="Amount" centered hide-header>
+            <b-container class="dispute-details" v-if="!isObjectEmpty(table.disputeDetails)">
+                <b-row>
+                    <b-col class="p-0">
+                        <span class="float-right text-bold"> Date: </span>
+                    </b-col>
+                    <b-col cols='8'>{{ table.disputeDetails.discription.date }}</b-col>
+                </b-row>
+                <b-row>
+                     <b-col class="p-0">
+                         <span class="float-right text-bold">Category: </span>
+                     </b-col>
+                     <b-col cols='8'>{{ JSON.parse(table.disputeDetails.discription.tag1)[0] }}</b-col>
+                </b-row>
+                <b-row>
+                    <b-col class="p-0">
+                        <span class="float-right text-bold">Sub-Category: </span>
+                    </b-col>
+                    <b-col cols='8'>{{ JSON.parse(table.disputeDetails.discription.tag2)[0] }}</b-col>
+                </b-row>
+                <b-row>
+                    <b-col class="p-0">
+                        <span class="float-right text-bold">Dispute Detail: </span>
+                    </b-col>
+                    <b-col cols='8'>{{ table.disputeDetails.discription.dispute_detail }}</b-col>
+                </b-row>
+                <b-row>
+                    <b-col class="p-0">
+                        <span class="float-right text-bold">Dispute Status: </span>
+                    </b-col >
+                     
+                     <b-col cols='8'>{{ table.disputeDetails.status }}</b-col>
+                </b-row>
+                <b-row>
+                    <b-col class="p-0">
+                        <span class="float-right text-bold">Dispute Result: </span>
+                    </b-col>
+                    <b-col cols='8'>{{ table.disputeDetails.dispute_result }}</b-col>
+                </b-row>
+            </b-container>
             <b-button variant="primary" size="sm" class="mt-3" style="float:right" block @click="closeModal('dispute-modal')">Close</b-button>
         </b-modal>
 

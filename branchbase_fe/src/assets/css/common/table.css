@@ -193,6 +193,11 @@
 	color: var(--success);
 }
 
+.hr-table .label-info{
+	/* background-color: #ecb2b8; */
+	color: var(--info);
+}
+
   /* this changes the position of the loading */
 @media (max-width:600px){
 	.lds-roller {
