@@ -149,6 +149,10 @@
                             v-if="list.dispute_status_num == 3"
                             class="label-info"
                         >*Disputed</small>
+                        <small
+                            v-if="list.dispute_status_num == 4"
+                            class="label-warning"
+                        >*Disputed</small>
                     </td>
                     <td>
                         <button
