@@ -2,10 +2,12 @@ import tablelayout from '@/components/layout/table/table';
 import datetime from 'vuejs-datetimepicker';
 import { mapActions } from 'vuex';
 import { api } from '@/constants';
+import NoData from '@/components/layout/Nodata.vue';
 export default {
     components: {
         tablelayout,
-        datetime
+        datetime,
+        NoData
     },
     data() {
         return {
@@ -146,7 +148,6 @@ export default {
         },
         numberOnly(e) {
             const key = e.key;
-            // If is '.' key, stop it
             if (key === '.' || key === '-' || key === '+' || key === 'e') {
                 return e.preventDefault();
             }

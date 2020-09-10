@@ -92,6 +92,7 @@
             </div>
             <span v-for="(count,key,index) of badge_count" :key="index" class="detail-item" :class="' detail-item-'+count.class">{{ count.title }}<span class="detail-badge">{{ count.count }}</span> </span>
         </div>
+
         <!-- table here -->
 		<tablelayout
 			:header-data="table.collumn_lists"
@@ -104,7 +105,11 @@
             style="font-size: 13px;"
 		>
             <template v-slot:rows>
+                <td v-if="!table.show_lists.length" colspan="100" style="text-align:center;">
+					<NoData />
+				</td>
                 <tr 
+                    v-else
                     v-for="list in table.show_lists" 
                     :key="list.id"
                     @click="buttonClicked('dispute','', list)"
@@ -210,6 +215,7 @@
             </div>
             <b-button variant="primary" size="sm" class="mt-3" style="float:right" block @click="closeModal('dispute-modal')">Close</b-button>
         </b-modal>
+
     </div>
 </template>
 <script src="./js/earnings.js"></script>

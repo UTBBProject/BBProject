@@ -42,7 +42,7 @@
 						</center>
 					</td>
 				</tbody>
-				<tbody v-else-if="!dataList.length">
+				<tbody v-else-if="!dataList.length ">
 					<td colspan="100" style="text-align:center;">
 						<Nodata />
 					</td>
