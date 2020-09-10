@@ -45,7 +45,9 @@ export default {
 		// declare an array of numbers, doesnt show collumn in number 0(default) [1,2,3]
 		disableColl: { type: [Number,Array], default: 0 },
 		// current page
-		currentPage: { type: Number }
+		currentPage: { type: Number },
+		// if not data
+		noData: {type: Boolean, default: false}
 	},
 	methods: {
 		paginationClickHandler(num){

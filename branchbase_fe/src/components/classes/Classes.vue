@@ -95,6 +95,7 @@
 			:header-data="table.collumn_lists"
             headerStyle
 			:data-list="table.show_lists"
+            :noData="!table.show_lists.length"
 			:page-count="table.pages"
             :pagination-show="true"
 			:getPageNum="getPageNum"

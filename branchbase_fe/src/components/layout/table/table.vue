@@ -10,9 +10,9 @@
 						<th v-if="actionPass" :style="'width:'+actionCollumnWidth+'px;'">Action</th>
 					</tr>
 				</thead>
-				<tbody v-if="!onLoad" style="">
+				<tbody v-if="!onLoad && !noData" style="">
 					<slot name="rows" v-if="dataList == null"></slot>
-					<template>
+					<template v-else>
 						<tr class="bb-table-row" v-for="list in dataList" :key="list.id" :style="trStyle">
 							<!-- v-if="((index+1)!=disableColl)" -->
 							<td v-for="(item,key, index) of setBody(list)" :key="index" :style="typeof item.style != 'undefined' ? item.style : ''">
@@ -42,7 +42,7 @@
 						</center>
 					</td>
 				</tbody>
-				<tbody v-else-if="!dataList.length ">
+				<tbody v-else>
 					<td colspan="100" style="text-align:center;">
 						<Nodata />
 					</td>

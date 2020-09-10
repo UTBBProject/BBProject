@@ -105,7 +105,7 @@
             style="font-size: 13px;"
 		>
             <template v-slot:rows>
-                <td v-if="!table.show_lists.length" colspan="100" style="text-align:center;">
+                <td v-if="table.show_lists.length == 0" colspan="100" style="text-align:center;">
 					<NoData />
 				</td>
                 <tr 
