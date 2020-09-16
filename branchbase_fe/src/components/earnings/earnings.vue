@@ -108,9 +108,9 @@
                 <td v-if="table.show_lists.length == 0" colspan="100" style="text-align:center;">
 					<NoData />
 				</td>
-                <tr v-b-tooltip.hover.bottom.v-primary
+                <tr v-else
+                    v-b-tooltip.hover.bottom.v-primary
                     :title="list.dispute_status != null && list.dispute_description != null ? 'View Dispute' : ''"
-                    v-else
                     v-for="list in table.show_lists" 
                     :key="list.id"
                     @click="buttonClicked('dispute','', list)"

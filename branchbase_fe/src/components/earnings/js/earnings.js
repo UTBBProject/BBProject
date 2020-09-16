@@ -171,7 +171,7 @@ export default {
                     status: return_something.dispute_status,
                     date: return_something.dispute_date,
                     discription: JSON.parse(return_something.dispute_description),
-                    dispute_result: return_something.dispute_result
+                    dispute_result: return_something.dispute_result == 'refuse' ? 'Rejected' : return_something.dispute_result
                 } : false ;
                 if (disShow) {
                     this.table.disputeDetails = disShow;
