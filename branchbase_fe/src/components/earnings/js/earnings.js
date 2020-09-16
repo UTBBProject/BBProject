@@ -264,7 +264,7 @@ export default {
 
             this.API_GET({ url, param }).then((res) => {
                 that.toClassRoute.params.current_page == res.current_page;
-                that.table.show_lists = res.data;
+                that.table.show_lists = res.data ? res.data : [];
                 that.table.loading = false;
                 that.table.pages = res.last_page;
                 that.search.onLoad = false;
